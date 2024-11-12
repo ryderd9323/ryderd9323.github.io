@@ -9,20 +9,26 @@
 <body>
 
 	<div class="topscreen">  
+
 		<div class="hamburger-menu">
-		<nav>
-				<input type="checkbox" id="check">
-				<label for="check" class="checkbtn">
-					<i class="fas fa-bars"></i>
-				</label>
-				<div class="nav-mobile">
-					<a href="#">Home</a>
-					<a href="#">Account</a>
-					<a href="#">Building Tips</a>
-					<a href="#">Avatar</a>
-				</div>
-			</nav>
+			<head>
+				<!-- Material Icon CDN -->
+				<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+			  </head>
+			  <body>
+				<ul class="menu">
+				  <li><a class="menuItem" href="#">Home</a></li>
+				  <li><a class="menuItem" href="#">Profile</a></li>
+				  <li><a class="menuItem" href="#">Building Tips</a></li>
+				  <li><a class="menuItem" href="#">Avatar</a></li>
+				</ul>
+				<button class="hamburger">
+				  <i class="menuIcon material-icons">menu</i>
+				  <i class="closeIcon material-icons">close</i>
+				</button>
+			  </body>			  
 		</div>
+
 		<h1>TrekUIC</h1>
 		<img src="images/uiclogo.png" alt="uiclogo">
 	</div>
@@ -35,6 +41,8 @@
 		<h1>UIC Map</h1>
 		<img src="images/SELE_Floor1_Rev2.png" alt="map">
 	</div>
-	
+
+	<script src="index.js"></script>
+
 </body>
 </html>
