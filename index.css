@@ -1,20 +1,25 @@
 /*hamburger menu*/
 body{
-    background-color: rgb(220,220,220);
+    background-color: white;
 }
 
 .hamburger {
     position: fixed;
     z-index: 100;
-    top: 3rem;
+    top: 2rem;
     left: 1rem;
     padding: 4px;
-    border: black solid 1px;
-    background: white;
+    border: black solid 0px;
+    background: #27245C;
+    color: white;
     cursor: pointer;
     left: 5vh;
     height: 5vh;
-  }
+}
+
+.scrolled-past-header {
+    background-color: white !important;
+}
 
 .closeIcon {
     display: none;
@@ -22,17 +27,24 @@ body{
 
 .menu {
     position: fixed;
-    transform: translateY(-100%);
-    transition: transform 0.2s;
-    top: 0;
+    transform: translateY(-150%);
+    transition: transform 0.4s;
+    top: -10px;
     left: 0;
     right: 0;
     bottom: 0;
     z-index: 99;
-    background: black;
-    color: white;
+    border-style: solid;
+    border-color: black;
+    background: #27245C;
     list-style: none;
-    padding-top: 4rem;
+    padding-top: 8rem;
+    width: 10%;
+    height: 35%;
+}
+
+a:link {
+    color: white;
 }
 
 .showMenu {
@@ -46,8 +58,10 @@ body{
     align-items: center; 
     justify-content: center;
     background-color: #27245C;
-    margin-top: 10px;
-    width: 99%;
+    margin-top: -0.5%;
+    margin-left: -.5%;
+    width: 100%;
+    left: 0%;
     padding: 10px;
 }
 
@@ -67,26 +81,176 @@ body{
     border-radius:50%;
 }
 
-.dropdown .searchbar{
-    margin-top: 50px;
-    max-width: fit-content;
-    margin-left: auto;
-    margin-right: auto;
+h1 {
+    color: white;
 }
 
-/*map*/
+/*end of top screen*/
+
+/*dropdown css*/ 
+.dropdown {
+    padding: 32px;
+}
+/*css for start destination search bar*/
+.select-box {
+    margin-left: auto;
+    margin-right: auto;
+    margin-top:10px;
+    display: flex;
+    width: 50%;
+    flex-direction: column; 
+}
+
+.select-box .options-container {
+    background: #f1f1f1;
+    max-height: 0;
+    width: 100%;
+    opacity: 0;
+    transition: all 0.4s;
+    border-radius: 8px;
+    overflow: hidden;
+
+    order: 1;
+}
+
+.startSearchbar {
+    background-color: #f1f1f1;
+    border-radius: 8px;
+    margin-bottom: 8px;
+    position: relative;
+
+    order: 0;
+}
+
+.startSearchbar::after {
+    content: "";
+    background: url("images/chevron-down.svg");
+    background-size: contain;
+    background-repeat: no-repeat;
+
+    position: absolute;
+    height: 100%;
+    width: 32px;
+    right: 10px;
+    top: 5px;
+
+    transition: all 0.4s;
+}
+
+.select-box .options-container.active {
+    max-height: 240px;
+    opacity: 1;
+    overflow-y: scroll;
+}
+
+.select-box .options-container.active + .startSearchbar::after {
+    transform: rotateX(180deg);
+    top: -6px;
+}
+
+.select-box .options-container::-webkit-scrollbar {
+    width: 8px;
+    background: #d7d7d7;
+    border-radius: 0 8px 8px 0;
+}
+
+.select-box .options-container::-webkit-scrollbar-thumb {
+    background: #929292;
+    border-radius: 0 8px 8px 0;
+}
+
+.select-box .option,
+.startSearchbar {
+    padding: 12px 24px;
+    cursor: pointer;
+}
+
+.select-box .option:hover {
+    background: #b4b4b4
+}
+
+.select-box label {
+    cursor: pointer;
+}
+
+.select-box .option .radio {
+    display: none;
+}
+/*end of start destination search bar css*/
+
+/*css for end destination search bar*/
+.endSearchbar {
+    background-color: #f1f1f1;
+    border-radius: 8px;
+    margin-bottom: 8px;
+    position: relative;
+
+    order: 0;
+}
+
+.endSearchbar::after {
+    content: "";
+    background: url("images/chevron-down.svg");
+    background-size: contain;
+    background-repeat: no-repeat;
+
+    position: absolute;
+    height: 100%;
+    width: 32px;
+    right: 10px;
+    top: 5px;
+
+    transition: all 0.4s;
+}
+
+.select-box .options-container.active + .endSearchbar::after {
+    transform: rotateX(180deg);
+    top: -6px;
+}
+
+.select-box .option,
+.endSearchbar {
+    padding: 12px 24px;
+    cursor: pointer;
+}
+/*end of end destination search bar css*/
+
+/*map/label*/
 .map{
-    width:100%;
-    height:80vh;
+    position: relative;
+    top: 0;
+    left: 0;
     display:flex;
-    align-items:center;
+    align-items: center;
+    justify-content: center;
+    flex-direction:column;
+    transform: scale(.5);
+}
+
+.building {
+    top: 0;
+    left: 0;
+    position: relative;
+    width: 100%;
+    height: 100%;
+    margin: -32.5%;
+}
+
+.route {
+    left: 0;
+    top: -47.5%;
+    position: absolute;
+    width: 100%;
+    height: 195%;
+}
+
+.map-label {
+    margin-bottom: 1px;
+    width:100%;
+    display:flex;
+    align-items: center;
     justify-content: center;
     flex-direction:column;
 }
-
-.map img {
-   max-width: auto;
-   height: 50vh;
-
-}
+/*end of map/label*/
 

@@ -18,8 +18,11 @@
 			  <body>
 				<ul class="menu">
 				  <li><a class="menuItem" href="#">Home</a></li>
+				  <br>
 				  <li><a class="menuItem" href="#">Profile</a></li>
+				  <br>
 				  <li><a class="menuItem" href="#">Building Tips</a></li>
+				  <br>
 				  <li><a class="menuItem" href="#">Avatar</a></li>
 				</ul>
 				<button class="hamburger">
@@ -34,12 +37,85 @@
 	</div>
 
 	<div class="dropdown">
-		<div class="searchbar">searchbar</div>
+		<div class = "select-box" id = "start-box">
+			<div class = "options-container" id = "start-container">
+				<div class = "option">
+					<input type = "radio" class = "radio" id = "Bathrooms" name = "category"/>
+					<label for = "Bathrooms">Bathrooms</label>
+				</div>
+
+				<div class = "option">
+					<input type = "radio" class = "radio" id = "CenterStudyArea" name = "category"/>
+					<label for = "CenterStudyArea">Center Study Area</label>
+				</div>
+
+				<div class = "option">
+					<input type = "radio" class = "radio" id = "EntranceNW" name = "category"/>
+					<label for = "EntranceNW">Entrance NW</label>
+				</div>
+
+				<div class = "option">
+					<input type = "radio" class = "radio" id = "VendingMachines" name = "category"/>
+					<label for = "VendingMachines">Vending Machines</label>
+				</div>
+
+				<div class = "option">
+					<input type = "radio" class = "radio" id = "1250" name = "category"/>
+					<label for = "1250">1250</label>
+				</div>
+
+				<div class = "option">
+					<input type = "radio" class = "radio" id = "1280" name = "category"/>
+					<label for = "1280">1280</label>
+				</div>
+			</div>
+
+			<div class="startSearchbar">Select Start Destination</div>
+		</div>
+
+		<div class = "select-box" id = "end-box">
+			<div class = "options-container" id = "end-container">
+				<div class = "option">
+					<input type = "radio" class = "radio" id = "Bathrooms" name = "category"/>
+					<label for = "Bathrooms">Bathrooms</label>
+				</div>
+
+				<div class = "option">
+					<input type = "radio" class = "radio" id = "CenterStudy" name = "category"/>
+					<label for = "CenterStudy">Center Study Area</label>
+				</div>
+
+				<div class = "option">
+					<input type = "radio" class = "radio" id = "EntranceNW" name = "category"/>
+					<label for = "EntranceNW">Entrance NW</label>
+				</div>
+
+				<div class = "option">
+					<input type = "radio" class = "radio" id = "VendingMachines" name = "category"/>
+					<label for = "VendingMachines">Vending Machines</label>
+				</div>
+
+				<div class = "option">
+					<input type = "radio" class = "radio" id = "1250" name = "category"/>
+					<label for = "1250">1250</label>
+				</div>
+
+				<div class = "option">
+					<input type = "radio" class = "radio" id = "1280" name = "category"/>
+					<label for = "1280">1280</label>
+				</div>
+			</div>
+
+		<div class="endSearchbar">Select End Destination</div>
+	</div>
+
+	<div class = "map-label">
+		<h2>SELE Floor 1 Map</h2>
 	</div>
 
 	<div class ="map">
-		<h1>UIC Map</h1>
-		<img src="images/SELE_Floor1_Rev2.png" alt="map">
+		<img class = "building" src="images/SELE_Map_Amenities.png" alt="map">
+		<img class = "route" id = "route" src="" hidden>
 	</div>
 
 	<script src="index.js"></script>
