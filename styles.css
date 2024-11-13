@@ -1,0 +1,108 @@
+/* Reset and Styling for Body */
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+}
+
+/* Navbar Container */
+.navbar {
+    display: flex;
+    align-items: center;
+    background-color: #333;
+    padding: 10px 20px;
+}
+
+.navbar-title {
+    color: white;
+    font-size: 24px;
+    font-weight: bold;
+    margin-right: auto;
+}
+
+.nav-links {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    gap: 10px;
+}
+
+.nav-links li {
+    display: inline;
+}
+
+.nav-links li a {
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+.nav-links li a:hover {
+    background-color: #111;
+}
+
+/* Content Layout */
+.content {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.dropdown-container {
+    position: relative;
+    width: 80%;
+    max-width: 400px;
+    margin: 10px auto;
+}
+
+.dropdown-input {
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #000;
+    border-radius: 4px;
+}
+
+.dropdown-list {
+    display: none;
+    position: absolute;
+    width: 100%;
+    background-color: #fff;
+    border: 1px solid #000;
+    border-radius: 4px;
+    max-height: 150px;
+    overflow-y: auto;
+    z-index: 1000;
+}
+
+.dropdown-list div {
+    padding: 10px;
+    cursor: pointer;
+}
+
+.dropdown-list div:hover {
+    background-color: #ddd;
+}
+
+.input-box {
+    display: block;
+    width: 80%;
+    margin: 10px auto;
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #000;
+    border-radius: 4px;
+    max-width: 400px;
+}
+
+.map-container {
+    width: 80%;
+    height: 300px;
+    border: 1px solid #000;
+    margin: 20px auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    max-width: 600px;
+}

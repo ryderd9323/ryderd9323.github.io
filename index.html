@@ -1,124 +1,34 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>TrekUIC</title>
-	<link rel="stylesheet" href="index.css">
+  <link rel="stylesheet" type="text/css" href="styles.css">
 </head>
 <body>
 
-	<div class="topscreen">  
+    <div class="navbar">
+        <span class="navbar-title">TrekUIC</span>
+        <ul class="nav-links">
+          <li><a class="active" href="#home">Home</a></li>
+          <li><a href="#tips">Building Tips</a></li>
+          <li><a href="#settings">Settings</a></li>
+          <li><a href="guide.html">Guide</a></li>
+        </ul>
+    </div>
 
-		<div class="hamburger-menu">
-			<head>
-				<!-- Material Icon CDN -->
-				<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-			  </head>
-			  <body>
-				<ul class="menu">
-				  <li><a class="menuItem" href="#">Home</a></li>
-				  <br>
-				  <li><a class="menuItem" href="#">Profile</a></li>
-				  <br>
-				  <li><a class="menuItem" href="#">Building Tips</a></li>
-				  <br>
-				  <li><a class="menuItem" href="#">Avatar</a></li>
-				</ul>
-				<button class="hamburger">
-				  <i class="menuIcon material-icons">menu</i>
-				  <i class="closeIcon material-icons">close</i>
-				</button>
-			  </body>			  
-		</div>
-
-		<h1>TrekUIC</h1>
-		<img src="images/uiclogo.png" alt="uiclogo">
-	</div>
-
-	<div class="dropdown">
-		<div class = "select-box" id = "start-box">
-			<div class = "options-container" id = "start-container">
-				<div class = "option">
-					<input type = "radio" class = "radio" id = "Bathrooms" name = "category"/>
-					<label for = "Bathrooms">Bathrooms</label>
-				</div>
-
-				<div class = "option">
-					<input type = "radio" class = "radio" id = "CenterStudyArea" name = "category"/>
-					<label for = "CenterStudyArea">Center Study Area</label>
-				</div>
-
-				<div class = "option">
-					<input type = "radio" class = "radio" id = "EntranceNW" name = "category"/>
-					<label for = "EntranceNW">Entrance NW</label>
-				</div>
-
-				<div class = "option">
-					<input type = "radio" class = "radio" id = "VendingMachines" name = "category"/>
-					<label for = "VendingMachines">Vending Machines</label>
-				</div>
-
-				<div class = "option">
-					<input type = "radio" class = "radio" id = "1250" name = "category"/>
-					<label for = "1250">1250</label>
-				</div>
-
-				<div class = "option">
-					<input type = "radio" class = "radio" id = "1280" name = "category"/>
-					<label for = "1280">1280</label>
-				</div>
-			</div>
-
-			<div class="startSearchbar">Select Start Destination</div>
-		</div>
-
-		<div class = "select-box" id = "end-box">
-			<div class = "options-container" id = "end-container">
-				<div class = "option">
-					<input type = "radio" class = "radio" id = "Bathrooms" name = "category"/>
-					<label for = "Bathrooms">Bathrooms</label>
-				</div>
-
-				<div class = "option">
-					<input type = "radio" class = "radio" id = "CenterStudy" name = "category"/>
-					<label for = "CenterStudy">Center Study Area</label>
-				</div>
-
-				<div class = "option">
-					<input type = "radio" class = "radio" id = "EntranceNW" name = "category"/>
-					<label for = "EntranceNW">Entrance NW</label>
-				</div>
-
-				<div class = "option">
-					<input type = "radio" class = "radio" id = "VendingMachines" name = "category"/>
-					<label for = "VendingMachines">Vending Machines</label>
-				</div>
-
-				<div class = "option">
-					<input type = "radio" class = "radio" id = "1250" name = "category"/>
-					<label for = "1250">1250</label>
-				</div>
-
-				<div class = "option">
-					<input type = "radio" class = "radio" id = "1280" name = "category"/>
-					<label for = "1280">1280</label>
-				</div>
-			</div>
-
-		<div class="endSearchbar">Select End Destination</div>
-	</div>
-
-	<div class = "map-label">
-		<h2>SELE Floor 1 Map</h2>
-	</div>
-
-	<div class ="map">
-		<img class = "building" src="images/SELE_Map_Amenities.png" alt="map">
-		<img class = "route" id = "route" src="" hidden>
-	</div>
-
-	<script src="index.js"></script>
+    <div class="content">
+        <div class="dropdown-container">
+            <input type="text" id="buildingInput" placeholder="Type building name..." class="dropdown-input" onkeyup="filterBuildings()">
+            <div id="dropdownList" class="dropdown-list">
+              <!-- Building options will appear here -->
+            </div>
+          </div>
+        
+          <input type="text" placeholder="Enter Room Number" class="input-box">
+        
+          <div class="map-container">
+          <p>Map of Building</p>
+        </div>
+    </div>
 
 </body>
 </html>
