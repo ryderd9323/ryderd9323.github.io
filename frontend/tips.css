@@ -1,0 +1,122 @@
+/* Reset default styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+
+    /* background-color: #a0c1eaaa; */
+    /* opacity: 0.5; */
+}
+
+body {
+    background-color: #a0c1eaaa;
+    /* opacity: 0.5; */
+}
+/* Navbar Container */
+.navbar {
+    display: flex;
+    align-items: center;
+    background-color: #0a1871;
+    padding: 10px 20px;
+}
+
+
+.navbar-title {
+    color: white;
+    font-size: 24px;
+    font-weight: bold;
+    margin-right: auto;
+}
+
+.nav-links {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    gap: 10px;
+}
+
+.nav-links li {
+    display: inline;
+}
+
+.nav-links li a {
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+.nav-links li a:hover {
+    background-color: #111;
+}
+
+/* Content section styling */
+.content {
+    width: 80%;
+    max-width: 800px;
+    margin: 20px auto;
+    padding: 20px;
+}
+
+.content h2 {
+    text-align: center;
+    margin-bottom: 30px;
+    font-size: 28px;
+}
+
+/* Tip row styling */
+.tip-row {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 15px;
+    width: 100%;
+}
+
+.tip-item {
+    flex: 1;
+    padding: 12px;
+    font-size: 18px;
+    border: 1px solid #333;
+    border-radius: 4px;
+    background-color: white;
+}
+
+.find-button {
+    width: 120px;
+    padding: 12px;
+    font-size: 16px;
+    border: 1px solid #333;
+    border-radius: 4px;
+    background-color: #ddd;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.find-button:hover {
+    background-color: #ccc;
+}
+
+/* Responsive design */
+@media screen and (max-width: 600px) {
+    .content {
+        width: 95%;
+        padding: 10px;
+    }
+
+    .tip-row {
+        flex-direction: column;
+        gap: 5px;
+    }
+
+    .tip-item {
+        width: 100%;
+        text-align: center;
+    }
+
+    .find-button {
+        width: 100%;
+    }
+}

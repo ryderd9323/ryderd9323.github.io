@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <link rel="stylesheet" type="text/css" href="styles.css">
+</head>
+<body>
+
+    <div class="navbar">
+        <span class="navbar-title">TrekUIC</span>
+        <ul class="nav-links">
+          <li><a class="active" href="opening.html">Home</a></li>
+          <li><a href="tips.html">Building Tips</a></li>
+          <li><a href="#settings">Settings</a></li>
+          <li><a href="guide.html">Guide</a></li>
+        </ul>
+    </div>
+
+    <div class="content">
+        <div class="dropdown-container">
+            <input type="text" id="buildingInput" placeholder="Type building name..." class="dropdown-input" onkeyup="filterBuildings()">
+            <div id="dropdownList" class="dropdown-list">
+              <!-- Building options will appear here -->
+            </div>
+          </div>
+        
+          <!-- <input type="text" placeholder="Enter Room Number" class="input-box"> -->
+
+          <input type="text" id="roomInput" placeholder="Enter Room Number"  class="dropdown-input" onkeyup="filterRooms()">
+        
+          <div class="map-container">
+          <p>Map of Building</p>
+        </div>
+    </div>
+
+</body>
+</html>

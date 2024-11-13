@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="tips.css">
+  <title>Building Tips</title>
+</head>
+<body>
+
+<!-- Navigation Bar -->
+<div class="navbar">
+  <span class="navbar-title">TrekUIC</span>
+  <ul class="nav-links">
+    <li><a href="opening.html">Home</a></li>
+    <li><a class="active" href="tips.html">Building Tips</a></li>
+    <li><a href="#settings">Settings</a></li>
+    <li><a href="guide.html">Guide</a></li>
+  </ul>
+</div>
+
+<!-- Building Tips Section -->
+<div class="content">
+  <h2>Building Tips</h2>
+  
+  <div class="tip-row">
+    <div class="tip-item">Men Restroom</div>
+    <button class="find-button" onclick="findLocation('Men Restroom')">Find!</button>
+  </div>
+
+  <div class="tip-row">
+    <div class="tip-item">Study Area</div>
+    <button class="find-button" onclick="findLocation('Study Area')">Find!</button>
+  </div>
+
+  <div class="tip-row">
+    <div class="tip-item">Food Court</div>
+    <button class="find-button" onclick="findLocation('Food Court')">Find!</button>
+  </div>
+
+  <div class="tip-row">
+    <div class="tip-item">Printer</div>
+    <button class="find-button" onclick="findLocation('Printer')">Find!</button>
+  </div>
+
+  <div class="tip-row">
+    <div class="tip-item">Sitting Area</div>
+    <button class="find-button" onclick="findLocation('Sitting Area')">Find!</button>
+  </div>
+</div>
+
+<!-- Optional JavaScript to handle button click -->
+<script>
+  function findLocation(location) {
+    alert("Finding location: " + location);
+    // Here you can add the logic to navigate or show information
+  }
+</script>
+
+</body>
+</html>
