@@ -3,9 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Route Display</title>
-    
-  <link rel="stylesheet" type="text/css" href="routeDisplay.css">
+    <link rel="stylesheet" href="final.css">
+    <title>Arrived</title>
 </head>
 <body>
     <div class="navbar">
@@ -18,14 +17,16 @@
         </ul>
     </div>
     <div class="container">
-        <div class="location-display">[Building Name, Room Number]</div> 
-        <div class="location-display">[Building Name, Room Number]</div>
-        <div class="map-container">
-            Map of Route
+        <div class="feedback-section">
+            <input type="text" class="feedback-input" placeholder="Feedback">
         </div>
+        
+        <div class="arrival-message">
+            You Have Arrived!
+        </div>
+        
         <div class="button-container">
-            <button>Reset</button>
-            <button>Start</button>
+            <button class="finish-button">Finish</button>
         </div>
     </div>
 </body>
