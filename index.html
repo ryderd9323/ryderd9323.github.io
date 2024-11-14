@@ -6,8 +6,8 @@
 	<title>TrekUIC</title>
 	<link rel="stylesheet" href="index.css">
 </head>
-<body>
 
+<body>
 	<div class="topscreen">  
 
 		<div class="hamburger-menu">
@@ -26,8 +26,8 @@
 				  <li><a class="menuItem" href="#">Avatar</a></li>
 				</ul>
 				<button class="hamburger">
-				  <i class="menuIcon material-icons">menu</i>
-				  <i class="closeIcon material-icons">close</i>
+				  <i class="menuIcon material-icons" id = "menuIcon">menu</i>
+				  <i class="closeIcon material-icons" id = "closeIcon">close</i>
 				</button>
 			  </body>			  
 		</div>
@@ -71,6 +71,10 @@
 			</div>
 
 			<div class="startSearchbar">Select Start Destination</div>
+
+			<div class="startSearchbox">
+				<input type = "text" placeholder = "Search here"/>
+			</div>
 		</div>
 
 		<div class = "select-box" id = "end-box">
@@ -107,6 +111,10 @@
 			</div>
 
 		<div class="endSearchbar">Select End Destination</div>
+
+		<div class="endSearchbox">
+			<input type = "text" placeholder = "Search here"/>
+		</div>
 	</div>
 
 	<div class = "map-label">
@@ -119,6 +127,5 @@
 	</div>
 
 	<script src="index.js"></script>
-
 </body>
 </html>
