@@ -216,7 +216,7 @@ h1 {
 /*end of destination search bar css*/
 
 /*map/label*/
-.map{
+.map-container {
     position: relative;
     top: 0;
     left: 0;
@@ -227,7 +227,11 @@ h1 {
     transform: scale(.5);
 }
 
-.building {
+#map {
+    transition: transform 0.1s ease-out;
+}
+
+.map {
     top: 0;
     left: 0;
     position: relative;

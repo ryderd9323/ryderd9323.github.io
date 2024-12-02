@@ -14,6 +14,16 @@ const endOptionsContainer = document.getElementById("end-container");
 const startOptionsList = startOptionsContainer.querySelectorAll(".option");
 const endOptionsList = endOptionsContainer.querySelectorAll(".option");
 
+// Zoom variables/constants
+const mapContainer = document.getElementById("map-container");
+const map = document.getElementById("map");
+
+let scale = 1;
+let translateX = 0;
+let translateY = 0;
+let isDragging = false;
+let startX, startY;
+
 var startDestination;
 var endDestination;
 
@@ -36,6 +46,63 @@ function displayRoute() {
   route.onerror = () => {
       route.hidden = true;
   }
+}
+
+// Map zoom functionality
+mapContainer.addEventListener("wheel", (e) => {
+  e.preventDefault();
+
+  const zoomIntensity = 0.1;
+  const oldScale = scale;
+
+  // Zoom in or out
+  if (e.deltaY < 0) {
+    scale += zoomIntensity;   // Zoom in
+  } else {
+    scale -= zoomIntensity;   // Zoom out
+  }
+  scale = Math.min(Math.max(0.5, scale), 3);  // Clamp the zoom level
+
+  // Adjust position to keep zoom centered
+  const rect = map.getBoundingClientRect();
+  const offsetX = (e.clientX - rect.left) / rect.width;
+  const offsetY = (e.clientY - rect.top) / rect.height;
+
+  translateX -= offsetX * (rect.width * (scale - oldScale));
+  translateY -= offsetY * (rect.height * (scale - oldScale));
+
+  updateTransform();
+})
+
+// Pan functionality for mouse (click and drag)
+mapContainer.addEventListener("mousedown", (e) => {
+  isDragging = true;
+  startX = e.clientX - translateX;
+  startY = e.clientY - translateY;
+  mapContainer.style.cursor = "grabbing";
+});
+
+mapContainer.addEventListener("mousemove", (e) => {
+  if (!isDragging) return;
+
+  translateX = e.clientX - startX;
+  translateY = e.clientY - startY;
+
+  updateTransform();
+});
+
+mapContainer.addEventListener("mouseup", () => {
+  isDragging = false;
+  mapContainer.style.cursor = "grab";
+});
+
+mapContainer.addEventListener("mouseleave", () => {
+  isDragging = false;
+  mapContainer.style.cursor = "grab";
+});
+
+function updateTransform() {
+  map.style.transform = `translate(${translateX}px, ${translateY}px) scale(${scale})`;
 }
 
 // Search box filter functionality
