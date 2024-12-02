@@ -17,6 +17,8 @@ const endOptionsList = endOptionsContainer.querySelectorAll(".option");
 // Zoom variables/constants
 const mapContainer = document.getElementById("map-container");
 const map = document.getElementById("map");
+const zoomOutButton = document.getElementById("zoom-out");
+const zoomInButton = document.getElementById("zoom-in");
 
 let scale = 1;
 let translateX = 0;
@@ -52,7 +54,7 @@ function displayRoute() {
 mapContainer.addEventListener("wheel", (e) => {
   e.preventDefault();
 
-  const zoomIntensity = 0.1;
+  const zoomIntensity = 0.05;
   const delta = Math.sign(e.deltaY) * zoomIntensity;
   const oldScale = scale;
 
@@ -69,6 +71,35 @@ mapContainer.addEventListener("wheel", (e) => {
 
   updateTransform();
 })
+
+// Zoom buttons
+zoomInButton.addEventListener("click", () => {
+  const zoomIntensity = 0.1;
+  const oldScale = scale;
+
+  scale += zoomIntensity;
+  scale = Math.min(scale, 3);
+
+  const rect = map.getBoundingClientRect();
+  translateX -= rect.width * (scale - oldScale) / 2;
+  translateY -= rect.height * (scale - oldScale) / 2;
+
+  updateTransform();
+});
+
+zoomOutButton.addEventListener("click", () => {
+  const zoomIntensity = 0.1;
+  const oldScale = scale;
+
+  scale -= zoomIntensity;
+  scale = Math.min(scale, 3);
+
+  const rect = map.getBoundingClientRect();
+  translateX -= rect.width * (scale - oldScale) / 2;
+  translateY -= rect.height * (scale - oldScale) / 2;
+
+  updateTransform();
+});
 
 // Pan functionality for mouse (click and drag)
 mapContainer.addEventListener("mousedown", (e) => {
