@@ -77,7 +77,7 @@ function displayRoute() {
 mapContainer.addEventListener("wheel", (e) => {
   e.preventDefault();
 
-  const zoomIntensity = 0.05;
+  const zoomIntensity = 0.01;
   const delta = Math.sign(e.deltaY) * zoomIntensity;
   const oldScale = scale;
 
@@ -131,7 +131,7 @@ mapContainer.addEventListener("mousedown", (e) => {
   isDragging = true;
   startX = e.clientX - translateX;
   startY = e.clientY - translateY;
-  mapContainer.style.cursor = "grabbing";
+  mapContainer.style.cursor = "move";
 });
 
 mapContainer.addEventListener("mousemove", (e) => {
@@ -145,12 +145,12 @@ mapContainer.addEventListener("mousemove", (e) => {
 
 mapContainer.addEventListener("mouseup", () => {
   isDragging = false;
-  mapContainer.style.cursor = "grab";
+  mapContainer.style.cursor = "move";
 });
 
 mapContainer.addEventListener("mouseleave", () => {
   isDragging = false;
-  mapContainer.style.cursor = "grab";
+  mapContainer.style.cursor = "move";
 });
 
 function updateTransform() {
