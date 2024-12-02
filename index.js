@@ -19,6 +19,7 @@ const mapContainer = document.getElementById("map-container");
 const map = document.getElementById("map");
 const zoomOutButton = document.getElementById("zoom-out");
 const zoomInButton = document.getElementById("zoom-in");
+const zoomResetButton = document.getElementById("zoom-reset");
 
 let scale = 1;
 let translateX = 0;
@@ -28,6 +29,28 @@ let startX, startY;
 
 var startDestination;
 var endDestination;
+
+function fitMapToContainer() {
+  const containerWidth = mapContainer.offsetWidth;
+  const containerHeight = mapContainer.offsetHeight;
+
+  const mapNaturalWidth = map.naturalWidth;
+  const mapNaturalHeight = map.naturalHeight;
+
+  const scaleX = containerWidth / mapNaturalWidth;
+  const scaleY = containerHeight / mapNaturalHeight;
+
+  scale = Math.min(scaleX, scaleY);
+
+  // Center the map
+  translateX = (containerWidth - mapNaturalWidth * scale) / 2;
+  translateY = (containerHeight - mapNaturalHeight * scale) / 2;
+
+  updateTransform();
+}
+
+// Fit map on window resize
+window.addEventListener("resize", fitMapToContainer);
 
 // Get image filepath once start and end destination are set
 // If it exists, display it
@@ -100,6 +123,8 @@ zoomOutButton.addEventListener("click", () => {
 
   updateTransform();
 });
+
+zoomResetButton.addEventListener("click", fitMapToContainer);
 
 // Pan functionality for mouse (click and drag)
 mapContainer.addEventListener("mousedown", (e) => {
@@ -235,3 +260,6 @@ startSearchbox.addEventListener("keyup", function(e) {
 endSearchbox.addEventListener("keyup", function(e) {
   filterList(e.target.value, endOptionsList);
 });
+
+// Initialize map
+fitMapToContainer();
