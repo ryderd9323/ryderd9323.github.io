@@ -14,43 +14,28 @@ const endOptionsContainer = document.getElementById("end-container");
 const startOptionsList = startOptionsContainer.querySelectorAll(".option");
 const endOptionsList = endOptionsContainer.querySelectorAll(".option");
 
-// Zoom variables/constants
-const mapContainer = document.getElementById("map-container");
-const map = document.getElementById("map");
-const zoomOutButton = document.getElementById("zoom-out");
-const zoomInButton = document.getElementById("zoom-in");
-const zoomResetButton = document.getElementById("zoom-reset");
+// Leaflet values
+const imageWidth = 2900;
+const imageHeight = 3840;
 
-let scale = 1;
-let translateX = 0;
-let translateY = 0;
-let isDragging = false;
-let startX, startY;
+const imageUrl = 'images/SELE_Map_Amenities.png';
+const imageBounds = [[0,0], [imageHeight,imageWidth]];
 
-var startDestination;
-var endDestination;
+const map = L.map('map', {
+  crs: L.CRS.Simple,
+  minZoom: -2
+});
 
-function fitMapToContainer() {
-  const containerWidth = mapContainer.offsetWidth;
-  const containerHeight = mapContainer.offsetHeight;
+// Initialize map
+L.imageOverlay(imageUrl, imageBounds).addTo(map);
 
-  const mapNaturalWidth = map.naturalWidth;
-  const mapNaturalHeight = map.naturalHeight;
+const containerHeight = window.innerHeight;
+const zoomToFit = containerHeight / imageHeight;
 
-  const scaleX = containerWidth / mapNaturalWidth;
-  const scaleY = containerHeight / mapNaturalHeight;
+const centerY = imageHeight - (containerHeight / 2 / zoomToFit);
+map.setView([centerY, imageWidth / 2], Math.log2(zoomToFit));
 
-  scale = Math.min(scaleX, scaleY);
-
-  // Center the map
-  translateX = (containerWidth - mapNaturalWidth * scale) / 2;
-  translateY = (containerHeight - mapNaturalHeight * scale) / 2;
-
-  updateTransform();
-}
-
-// Fit map on window resize
-window.addEventListener("resize", fitMapToContainer);
+map.setMaxBounds(imageBounds);
 
 // Get image filepath once start and end destination are set
 // If it exists, display it

@@ -4,6 +4,7 @@
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>TrekUIC</title>
+	<link rel="stylesheet" href="leaflet/leaflet.css">
 	<link rel="stylesheet" href="index.css">
 </head>
 
@@ -120,20 +121,9 @@
 		</div>
 	
 	</div>
-	<div class = "map-label">
-		<h2>SELE Floor 1 Map</h2>
-	</div>
-
-	<div class ="map-container" id="map-container">
-		<img class = "map" id="map" src="images/SELE_Map_Amenities.png" alt="map">
-		<img class = "route" id = "route" src="" hidden>
-		<div id="zoom-controls">
-			<button id="zoom-out">-</button>
-			<button id="zoom-in">+</button>
-			<button id="zoom-reset">Reset</button>
-		</div>
-	</div>
 	
+	<div id="map"></div>
+	<script src="leaflet/leaflet.js"></script>
 	<script src="index.js"></script>
 </body>
 </html>
