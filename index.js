@@ -53,14 +53,10 @@ mapContainer.addEventListener("wheel", (e) => {
   e.preventDefault();
 
   const zoomIntensity = 0.1;
+  const delta = Math.sign(e.deltaY) * zoomIntensity;
   const oldScale = scale;
 
-  // Zoom in or out
-  if (e.deltaY < 0) {
-    scale += zoomIntensity;   // Zoom in
-  } else {
-    scale -= zoomIntensity;   // Zoom out
-  }
+  scale -= delta;
   scale = Math.min(Math.max(0.5, scale), 3);  // Clamp the zoom level
 
   // Adjust position to keep zoom centered
