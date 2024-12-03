@@ -115,8 +115,7 @@ h1 {
 .select-box .options-container {
     background: #f1f1f1;
     max-height: 0;
-    width: 100vh;
-    max-width: 360px;
+    width: 100%;
     opacity: 0;
     transition: all 0.4s;
     border-radius: 8px;
@@ -170,9 +169,7 @@ h1 {
     border-radius: 8px;
     margin-bottom: 8px;
     position: relative;
-    width: 100vh;
-    max-width: 360px;
-    
+
     order: 0;
 }
 
@@ -196,8 +193,7 @@ h1 {
 /*start of text search box*/
 .startSearchbox input,
 .endSearchbox input {
-    width: 100vh;
-    max-width: 360px;
+    width: 100%;
     padding: 12px 16px;
     font-size: 16px;
     position: absolute;
