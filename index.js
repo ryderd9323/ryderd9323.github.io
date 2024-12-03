@@ -21,9 +21,11 @@ const imageHeight = 3840;
 const imageUrl = 'images/SELE_Map_Amenities.png';
 const imageBounds = [[0,0], [imageHeight,imageWidth]];
 
+
 const map = L.map('map', {
   crs: L.CRS.Simple,
-  minZoom: -2
+  minZoom: -3,
+  maxZoom: 2
 });
 
 // Initialize map
@@ -37,25 +39,117 @@ map.setView([centerY, imageWidth / 2], Math.log2(zoomToFit));
 
 map.setMaxBounds(imageBounds);
 
-// Get image filepath once start and end destination are set
+// Map markers
+var bathrooms = L.marker([3690, 232.5]);
+var centerStudy = L.marker([1975, 1500]);
+var entranceNW = L.marker([235, 492.5]);
+var r1280 = L.marker([2075, 2575]);
+
+// Basic map routing 
+var b_cS = [
+  bathrooms.getLatLng(),
+  [3725, 232.5],
+  [3725, 492.5],
+  [2050, 492.5],
+  [2050, 1500],
+  centerStudy.getLatLng()
+];
+
+var b_eNW = [
+  bathrooms.getLatLng(),
+  [3725, 232.5],
+  [3725, 492.5],
+  entranceNW.getLatLng()
+];
+
+var b_r1280 = [
+  bathrooms.getLatLng(),
+  [3725, 232.5],
+  [3725, 492.5],
+  [2050, 492.5],
+  [2050, 2575],
+  r1280.getLatLng()
+];
+
+var cS_eNW = [
+  centerStudy.getLatLng(),
+  [2050, 1500],
+  [2050, 492.5],
+  entranceNW.getLatLng()
+];
+
+var cS_r1280 = [
+  centerStudy.getLatLng(),
+  [2050, 1500],
+  [2050, 2575],
+  r1280.getLatLng()
+];
+
+var eNW_r1280 = [
+  entranceNW.getLatLng(),
+  [2050, 492.5],
+  [2050, 2575],
+  r1280.getLatLng()
+];
+
+var routes = [b_cS, b_eNW, b_r1280, cS_eNW, cS_r1280, eNW_r1280];
+
+var pl = L.polyline(b_r1280, {color: 'red'});
+var routeGroup = L.layerGroup();
+
+// Get route once start and end destination are set
 // If it exists, display it
 function displayRoute() {
-  var routePath;
-  // Route files are structured alphabetically
-  if(startDestination < endDestination) {
-    routePath = "images/routes/" + startDestination + "-" + endDestination + ".png";
-  }
+  // yikes
+  routeGroup.clearLayers();
+  map.removeLayer(routeGroup);
+  var route;
+
+  if(startDestination < endDestination)
+    route = startDestination + "-" + endDestination;
   else {
-    routePath = "images/routes/" + endDestination + "-" + startDestination + ".png";
+    route = endDestination + "-" + startDestination;
   }
 
-  var route = document.getElementById("route");
-  route.hidden = false;
-  // Display if image exists, hide if not
-  route.src = routePath;
-  route.onerror = () => {
-      route.hidden = true;
+  if(route == "1280-bathrooms") {
+    pl = L.polyline(b_r1280, {color: 'red'});
   }
+  else if (route == "1280-centerstudyarea") {
+    pl = L.polyline(cS_r1280, {color: 'red'});
+  }
+  else if (route == "1280-entrancenw") {
+    pl = L.polyline(eNW_r1280, {color: 'red'});
+  }
+  else if (route == "bathrooms-centerstudyarea") {
+    pl = L.polyline(b_cS, {color: 'red'});
+  }
+  else if (route == "bathrooms-entrancenw") {
+    pl = L.polyline(b_eNW, {color: 'red'});
+  }
+  else if (route == "centerstudyarea-entrancenw") {
+    pl = L.polyline(cS_eNW, {color: 'red'});
+  }
+
+  switch (endDestination) {
+    case "bathrooms":
+      routeGroup.addLayer(bathrooms);
+      break;
+
+    case "centerstudyarea":
+      routeGroup.addLayer(centerStudy);
+      break;
+
+    case "entrancenw":
+      routeGroup.addLayer(entranceNW);
+      break;
+
+    case "1280":
+      routeGroup.addLayer(r1280);
+      break;
+  }
+  routeGroup.addLayer(pl);
+  routeGroup.addTo(map);
+  map.fitBounds(pl.getBounds());
 }
 
 // Search box filter functionality
@@ -132,7 +226,6 @@ startOptionsList.forEach(s => {
 
     startDestination = s.querySelector("label").innerHTML.toLowerCase().replace(/\s/g, '');
     if(startDestination != null && endDestination != null) {
-      console.log(startDestination + " and " + endDestination);
       displayRoute();
     }
   });
@@ -146,7 +239,6 @@ endOptionsList.forEach(e => {
 
     endDestination = e.querySelector("label").innerHTML.toLowerCase().replace(/\s/g, '');
     if(startDestination != null && endDestination != null) {
-      console.log(startDestination + " and " + endDestination);
       displayRoute();
     }
   });
